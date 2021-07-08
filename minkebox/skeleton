@@ -1,0 +1,56 @@
+{
+  name: `Purple Air`,
+  description: ``,
+  uuid: `1F5A7E99-E2C5-4B1A-91A4-55CC69C177A4`,
+  image: `gitlab.home:5005/kn6plv/purpleair`,
+  tags: [
+    `Sensors`,
+    `AREDN`
+  ],
+  actions: [
+    {
+      type: `Header`,
+      title: `External Network`
+    },
+    {
+      type: `SelectNetwork`,
+      name: `primary`,
+      description: `Select which network the application will use.`
+    },
+    {
+      type: `EditEnvironmentAsCheckbox`,
+      name: `NAT`,
+      description: `Make search available on the network`,
+      initValue: false
+    }
+  ],
+  properties: [
+    {
+      type: `Directory`,
+      name: `/local-air/dataStore`
+    },
+    {
+      type: `Port`,
+      name: `3000/tcp`,
+      port: 3000,
+      protocol: `TCP`,
+      nat: `{{NAT}}`,
+      web: {
+        type: `newtab`,
+        path: ``
+      },
+      mdns: {
+        type: `_http._tcp`
+      }
+    },
+    {
+      type: `Network`,
+      name: `primary`,
+      value: `home`
+    }
+  ],
+  monitor: {
+    cmd: ``,
+    init: ``
+  }
+}
